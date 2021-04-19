@@ -7,10 +7,10 @@ country_code= input ('Enter country code: ')
 try:
 
     r = requests.get('http://api.openweathermap.org/data/2.5/weather?q='+city_name+','+country_code+'&appid=eb2ca2be29f51c799a233f2691ce7736&units=metric')
-except requests.exceptions.RequestException as e:
+except requests.exceptions.RequestException:
     print('Connection error')
 else:
-    if r.status_code==200:
+    if r.status_code == 200:
         rj = r.json()
         lon = rj['coord']['lon']
         lat = rj['coord']['lat']
